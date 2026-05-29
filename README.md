@@ -70,10 +70,10 @@ All settings and URL building live in `shared.js`, used by both the service work
 ## Build the upload zip
 
 ```sh
-zip -r levels-fyi-defaults.zip \
-  manifest.json background.js shared.js options.html options.js \
-  icons/icon-16.png icons/icon-48.png icons/icon-128.png
+./build.sh
 ```
+
+Produces `levels-fyi-defaults.zip` containing only the files the extension ships.
 
 ## Privacy
 
