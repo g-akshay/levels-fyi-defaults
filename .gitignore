@@ -1,0 +1,8 @@
+# Dev/tooling artifacts
+.playwright-mcp/
+.claude/
+_metadata/
+.DS_Store
+
+# Build output (regenerate with the zip command in README)
+levels-fyi-defaults.zip

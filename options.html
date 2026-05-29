@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>levels.fyi defaults</title>
+  <style>
+    :root { --fg:#1a1a1a; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb; }
+    * { box-sizing: border-box; }
+    body {
+      font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--fg); margin: 0; padding: 16px; width: 320px;
+    }
+    h1 { font-size: 15px; margin: 0 0 4px; }
+    p.sub { color: var(--muted); margin: 0 0 14px; font-size: 12px; }
+    label { display: block; font-weight: 600; margin: 12px 0 4px; }
+    input[type="text"], input[type="number"], select {
+      width: 100%; padding: 7px 8px; border: 1px solid var(--line);
+      border-radius: 8px; font-size: 13px; background: #fff;
+    }
+    .row { display: flex; gap: 8px; }
+    .row > * { flex: 1; }
+    .toggle { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; }
+    .toggle label { margin: 0; }
+    .preview {
+      margin-top: 14px; padding: 8px; border: 1px dashed var(--line);
+      border-radius: 8px; font-size: 11px; color: var(--muted);
+      word-break: break-all; background: #fafafa;
+    }
+    .actions { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+    button {
+      background: var(--accent); color: #fff; border: 0; border-radius: 8px;
+      padding: 8px 14px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    #status { color: #16a34a; font-size: 12px; opacity: 0; transition: opacity .2s; }
+    #status.show { opacity: 1; }
+    .hint { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  </style>
+</head>
+<body>
+  <h1>levels.fyi defaults</h1>
+  <p class="sub">Salary pages auto-jump to your preferred location, sort, and page size.</p>
+
+  <div class="toggle">
+    <input type="checkbox" id="enabled" />
+    <label for="enabled">Enabled</label>
+  </div>
+
+  <label for="preset">Location preset</label>
+  <select id="preset"></select>
+
+  <div class="row">
+    <div>
+      <label for="locationSlug">Location slug</label>
+      <input type="text" id="locationSlug" placeholder="india" />
+    </div>
+    <div style="flex:0 0 90px;">
+      <label for="locationParam">Type</label>
+      <select id="locationParam">
+        <option value="country">country</option>
+        <option value="dma">dma</option>
+      </select>
+    </div>
+    <div style="flex:0 0 80px;">
+      <label for="locationId">ID</label>
+      <input type="text" id="locationId" placeholder="113" />
+    </div>
+  </div>
+  <div class="hint">Slug is the URL part after <code>/locations/</code>. Pick a preset, or set custom.</div>
+
+  <label for="sortBy">Sort by</label>
+  <select id="sortBy">
+    <option value="total_compensation">Total compensation</option>
+    <option value="years_of_experience">Years of experience</option>
+  </select>
+
+  <div class="row">
+    <div>
+      <label for="sortOrder">Order</label>
+      <select id="sortOrder">
+        <option value="DESC">Highest first</option>
+        <option value="ASC">Lowest first</option>
+      </select>
+    </div>
+    <div>
+      <label for="limit">Results per page</label>
+      <input type="number" id="limit" min="1" max="200" />
+    </div>
+  </div>
+
+  <div class="preview" id="preview"></div>
+
+  <div class="actions">
+    <button id="save">Save</button>
+    <span id="status">Saved ✓</span>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
